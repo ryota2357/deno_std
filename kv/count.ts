@@ -28,11 +28,8 @@ export async function count(
   selector: Deno.KvListSelector,
   options?: Deno.KvListOptions,
 ): Promise<number> {
-  /**
-   * If limit is unspecified, use the largest possible batch size for fast
-   * executing iterator.
-   */
-  const batchSize = options?.limit === undefined ? 500 : options.limit;
+  // Use the largest possible batch size for fast executing iterator.
+  const batchSize = options?.limit ?? 500;
   let count = 0;
   for await (const _ of kv.list(selector, { ...options, batchSize })) count++;
   return count;
