@@ -13,7 +13,7 @@ export type CountOptions = Omit<
  * ```ts
  * import { count } from "https://deno.land/std@$STD_VERSION/kv/count.ts";
  *
- * const kv = Deno.openKv();
+ * using kv = await Deno.openKv();
  * await kv.set(["foo", "a"], "bar");
  * await kv.set(["bar", "b"], "baz");
  *
