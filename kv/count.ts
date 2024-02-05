@@ -9,6 +9,11 @@ export type CountOptions = Omit<
 /**
  * Counts the number of entries in the database for the given selector.
  *
+ * Warning: this function iterates over all entries for the given selector.
+ * This should be taken into consideration when there is a cost for KV use,
+ * such as {@link https://deno.com/deploy | Deno Deploy}. It's recommended to
+ * use the most specific selector possible to avoid unnecessary iteration.
+ *
  * @example
  * ```ts
  * import { count } from "https://deno.land/std@$STD_VERSION/kv/count.ts";
